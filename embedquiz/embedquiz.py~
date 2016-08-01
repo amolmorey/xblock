@@ -1,0 +1,69 @@
+"""TO-DO: Write a description of what this XBlock is."""
+import pkg_resources
+import requests
+
+
+
+from xblock.core import XBlock
+from xblock.fields import Scope, Integer, String
+from xblock.fragment import Fragment
+
+
+class EmbedQuizXBlock(XBlock):
+    """
+    TO-DO: document what your XBlock does.
+    """
+   
+   
+    
+    def resource_string(self, path):
+        """Handy helper for getting resources from our kit."""
+        data = pkg_resources.resource_string(__name__, path)
+        return data.decode("utf8")  
+
+
+    def student_view(self, context=None):
+        """
+        Create a fragment used to display the XBlock to a student.
+        `context` is a dictionary used to configure the display (unused)
+
+        Returns a `Fragment` object specifying the HTML, CSS, and JavaScript
+        to display.
+        """
+        #embed_code = self.get_url(self.href)
+        #provider, embed_code = self.get_embed_code_for_url(self.href)
+        html_str = self.resource_string("static/html/embedquiz.html")
+        frag = Fragment(html_str.format(self=self))
+        frag.add_css(self.resource_string("static/css/embedquiz.css")) 
+        frag.add_css(self.resource_string("static/css/mystyle.css"))
+        #frag.add_css(self.resource_string("static/css/bootstrap.min.css"))
+        frag.add_javascript_url("https://www.youtube.com/player_api")
+        frag.add_javascript(self.resource_string("static/js/src/embedquiz.js"))
+        
+        
+        frag.initialize_js('EmbedQuizXBlock')
+
+        return frag
+
+        
+    
+    
+
+    
+    
+
+    
+
+    @staticmethod
+    def workbench_scenarios():
+        """A canned scenario for display in the workbench."""
+        return [
+            ("EmbedQuizXBlock",
+            """\
+                <vertical_demo>
+                    <embedquiz href="https://www.youtube.com/watch?v=w8oMnNVKglI" maxwidth="800" maxheight="800" />
+                    <html_demo><div>Rate the video:</div></html_demo>
+                    <thumbs />
+                </vertical_demo>
+             """)
+        ]

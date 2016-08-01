@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<div id="player"></div>
+
+
+<div id="time"></div>
+<!-- Question 1 -->
+
+<div class="quizoverlay" id="quizoverlay" hidden="true">
+		
+		<form role="form" class="Q1" id="Q1">
+			<h3>CS101: QUIZ I</h3>
+			<div class="form-group">
+				<label for="email"><h4>Can a drawer in Dumbo&#39;s memory be empty?</h4></label>
+			</div>
+			<div class="form-group">
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="option01" value="option01"><span>Yes</span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="option02" value="option02"><span>No</span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="option03" value="option03"><span>May Be</span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="option04" value="option04"><span>Don&#39;t Know</span></label>
+				</div>
+			</div>	
+			<p></p>
+			<div class="form-group" class="button">
+				<button type="button" class="buttonCheck" onclick=check()>Check</button>
+				<button type="button" class="buttonSkip" onclick=skip()>Continue</button>
+			</div>
+			<p></p>
+			<label class="" for="check" id="check"></label>
+		</form> 
+</div>	<!-- Question 1 closing -->
+
+<!-- Question 2 -->
+
+<div class="quizoverlay2" id="quizoverlay2" hidden="true">
+
+		
+		<form role="form" class="Q2" id="Q2">
+			<h3>CS101: QUIZ II</h3>
+			<div class="form-group">
+				<label for="email"><h4>Following instruction is given in a program to DUMBO <br> COUNT = COUNT + 1 <br> What will happen when Dumbo attempts to execute this instruction?</h4></label>
+			</div>
+			<div class="form-group">
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="optionQ1" value="option01"><span>Dumbo will not execute this instruction because <br> the location COUNT appears on both sides of the symbol = </span></label>
+				</div>
+				<br>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="optionQ2" value="option02"><span> Dumbo will execute the instruction and will change the value in the location COUNT</span></label>
+				</div>
+				
+			</div>	
+			
+			<p></p>
+			
+			<div class="form-group" class="button">
+				<button type="button" class="buttonCheck" onclick=check2()>Check</button>
+				<button type="button" class="buttonSkip" onclick=skip2()>Continue</button>
+			</div>
+			
+			<p></p>
+			<label class="" for="check" id="check2"></label>
+		</form> 
+</div> <!-- Question 2 closing -->
+
+<!-- Question 3 -->
+
+<div class="quizoverlay3" id="quizoverlay3" hidden="true">
+
+		
+		<form role="form" class="Q3" id="Q3">
+			<h3>CS101: QUIZ III</h3>
+			<div class="form-group">
+				<label for="email"><h4>We give the following program to Mr. Dumbo: <br> Use locations A, B, SUM; Input B; SUM = A + B; Output SUM; <br> When Dumbo executes the above program, it will: </h4></label>
+			</div>
+			<div class="form-group">
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="opt01" value="option01"><span>Stop at the instruction SUM = A + B </span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="opt02" value="option02"><span>Will complete execution but will not output any value</span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="opt03" value="option03"><span>Will output the value of SUM</span></label>
+				</div>
+				<div class="radio">
+				<label><input type="radio" name="optradio" id="opt04" value="option04"><span>Don&#39;t Know</span></label>
+				</div>
+			</div>	
+			
+			<p></p>
+			
+			<div class="form-group" class="button">
+				<button type="button" class="buttonCheck" onclick=check3()>Check</button>
+				<button type="button" class="buttonSkip" onclick=skip3()>Continue</button>
+			
+			</div>
+			
+			<p></p>
+			
+			<label class="" for="check" id="check3"></label>
+		</form> 
+</div> <!-- Question 3 closing -->

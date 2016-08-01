@@ -1,0 +1,110 @@
+body{
+/*background-color: white;*/
+text-align:center;
+}
+
+#time{
+color:black;
+text-align:left;
+}
+
+
+
+iframe{
+position:relative;
+top: 0px;
+left: 0px;
+right: 0px;
+text-align:center;
+}
+
+#correct{
+color:green;
+font-size:xx-large;
+}
+
+#false{
+color:red;
+font-size:xx-large;
+}
+
+.text-align{
+justify;
+}
+
+.radio{
+margin-left:20%;
+text-align:left;
+}
+
+.quizoverlay{
+top: 70px;
+left: 90px;
+right: 0px;
+height: 350px;
+width: 640px;
+z-index: 1000;
+background: white;
+opacity: 0.9;
+position:absolute;
+text-align:center;
+}
+
+.quizoverlay2{
+top: 0px;
+left: 0px;
+right: 0px;
+height: 350px;
+width: 640px;
+z-index: 1000;
+background: white;
+opacity: 0.9;
+position:absolute;
+text-align:center;
+}
+
+.quizoverlay3{
+top: 0px;
+left: 0px;
+right: 0px;
+height: 415px;
+width: 720px;
+z-index: 1000;
+background: white;
+opacity: 0.9;
+position:absolute;
+text-align:center;
+
+}
+
+.button{
+padding: 5px;
+display:inline-block;
+}
+
+.buttonCheck
+{
+height:40px;
+width: 120px;
+color: white;
+background-color: #228B22;
+border-color: #228B22;
+text-align:center;
+}
+
+.buttonSkip{
+height:40px;
+width: 120px;
+color: black;
+background-color: #FFE13C;
+border-color: #FFE13C;
+text-align:center;
+}
+
+#q1{
+border: 1px;
+}
+
+span{
+position:absolute;
+}

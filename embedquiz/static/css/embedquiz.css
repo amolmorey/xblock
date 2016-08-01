@@ -1,0 +1,9 @@
+/* CSS for EmbedQuizXBlock */
+
+.embedquiz_block .count {
+    font-weight: bold;
+}
+
+.embedquiz_block p {
+    cursor: pointer;
+}

@@ -1,0 +1,231 @@
+
+function EmbedQuizXBlock(runtime, element) {
+
+   var player = null;  
+       
+
+
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+   
+      window.onYouTubeIframeAPIReady = function() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          //videoId: document.getElementById("code").value,
+          videoId: 'o3q5CrIf0kg',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+    
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 4. The API will call this function when the video player is ready.
+      window.onPlayerReady=function(event) {
+        
+        event.target.playVideo();
+      }
+      
+	  
+	 var currentTime = 0;
+	  
+	  //var stopAtQ1 = 4000;
+	  //var windowSize = 200;
+	  //var SEC2MILL = 1000;
+	  
+	  // Time in minutes, seconds at which Q1 is displayed
+	  var stopAtQ1M = 4;
+	  var stopAtQ1S = 53;
+	  
+	  //Time in minutes, seconds at which Q2 is displayed
+	  var stopAtQ2M = 7;
+	  var stopAtQ2S = 2;
+	  
+	  //Time in minutes, seconds at which Q3 is displayed
+	  var stopAtQ3M = 7;
+	  var stopAtQ3S = 46;
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+  
+
+
+
+    var done = false;
+      window.onPlayerStateChange=function(event) {
+       
+    setInterval(function(){
+		
+			currentTime = getCTime();
+					
+			var m = getCMin();
+			var s = getCSecd();
+			
+			//document.getElementById("time").innerHTML = m + ":" + s;
+			
+			if (event.data == YT.PlayerState.PLAYING && !done) {
+				if( m == stopAtQ1M && s == stopAtQ1S)
+				//if( ( currentTime*SEC2MILL >= (stopAtQ1 - ( windowSize / 2 ) ) ) && ( currentTime*SEC2MILL <= ( stopAtQ1 + ( windowSize / 2 ) ) ) )
+				{
+				pauseVideo();
+                                 
+				mydialog();
+
+				done = true;
+				}	
+			}
+		},100);
+      }
+	  
+	  function popup2(){
+		
+		var done = false;			
+		
+		setInterval(function(){
+		
+		currentTime = getCTime();
+			
+			var m = getCMin();
+			var s = getCSecd();
+				
+			if ( m == stopAtQ2M && s == stopAtQ2S && !done)
+			//if( ( currentTime*SEC2MILL >= (stopAtQ2 - ( windowSize / 2 ) ) ) && ( currentTime*SEC2MILL <= ( stopAtQ2 + ( windowSize / 2 ) ) ) && !done)
+			{
+				pauseVideo();
+				mydialog2();
+
+				done = true;
+			}	
+			
+		},100);
+	  }
+	  
+	  function popup3(){
+
+		var done=false;
+				
+		setInterval(function(){
+		
+		currentTime = getCTime();
+			
+			var m = getCMin();
+			var s = getCSecd();
+			 		
+			if ( m == stopAtQ3M && s == stopAtQ3S && !done)
+			//if( ( currentTime*SEC2MILL >= (stopAtQ3 - ( windowSize / 2 ) ) ) && ( currentTime*SEC2MILL <= ( stopAtQ3 + ( windowSize / 2 ) ) ) && !done)
+			{
+				pauseVideo();
+                                
+				mydialog3();
+				
+				done = true;
+			}	
+			
+		},100);		
+	  }
+      
+	  //To get current player time
+	  function getCTime(){
+	  return player.getCurrentTime();
+	  }
+	   
+	  //To get current time in minutes
+	  function getCMin(){
+	   return Math.floor(getCTime()/60);
+	  } 
+	  
+	  //To get current time in seconds
+	  function getCSecd(){
+	  var secd = getCTime() % 60;
+	  return Math.ceil(secd);
+	  }
+	  
+	  //To stop video playback
+      function stopVideo() {
+        player.stopVideo();
+      }
+	  
+	  //To pause video playback
+	  function pauseVideo(){
+		player.pauseVideo();
+	  }
+    
+	//To display first quiz question as overlay
+	function mydialog(){
+		document.getElementById('quizoverlay').style.display="block";
+	}
+	
+	//To check the options of first quiz question selected by user for correctness
+	window.check = function (){
+	
+		if(document.getElementById('option02').checked == true){
+			document.getElementById("check").innerHTML = "<label id='correct'>Correct</label>";		
+		}
+		else{
+			document.getElementById("check").innerHTML = "<label id='false'>Try again</label>";
+		}
+	}
+	
+	//To hide the first quiz question and continue video playback
+	window.skip= function(){
+		document.getElementById('quizoverlay').style.display="none";
+		player.playVideo();
+		popup2();
+	}
+
+	//To display second quiz question as overlay
+	function mydialog2(){
+		document.getElementById('quizoverlay2').style.display="block";
+	}
+
+	//To check the options of second quiz question selected by user for correctness
+	window.check2= function(){
+ 
+		if(document.getElementById('optionQ2').checked == true){
+			document.getElementById("check2").innerHTML = "<label id='correct'>Correct</label>";
+		}
+		else{
+			document.getElementById("check2").innerHTML = "<label id='false'>Try again</label>";
+		}
+	}
+	
+	//To hide the second quiz question and continue video playback
+	window.skip2 = function(){
+		document.getElementById('quizoverlay2').style.display="none";
+		player.playVideo();
+		popup3();
+	}
+
+	//To display third quiz question as overlay
+	function mydialog3(){
+		document.getElementById('quizoverlay3').style.display="block";
+	}
+
+	//To check the options of third quiz question selected by user for correctness
+	window.check3 = function(){
+ 
+		if(document.getElementById('opt03').checked == true){
+			document.getElementById("check3").innerHTML = "<label id='correct'>Correct</label>";
+		}
+		else{
+			document.getElementById("check3").innerHTML = "<label id='false'>Try again</label>";
+		}
+	}
+
+	//To hide the third quiz question and continue video playback
+	function skip3(){
+		document.getElementById('quizoverlay3').style.display="none";
+		player.playVideo();
+	} 
+
+
+}
